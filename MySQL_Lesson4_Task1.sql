@@ -56,14 +56,23 @@ SELECT * FROM person;
 SELECT * FROM salary;
 SELECT * FROM personalData;
 
-SELECT phone, adress FROM person
-JOIN
+SELECT name, phone, adress FROM person
+INNER JOIN
 personalData
 ON person.id = personalData.id;
 
-SELECT birthday, phone FROM personalData
-JOIN
+SELECT name, birthday, phone FROM personalData
+INNER JOIN
 person
-ON personlData.id = person.id
+ON personalData.id = person.id
+WHERE personalData.familyStatus = 'Divorced';
 
+SELECT name, birthday, phone FROM salary
+INNER JOIN
+personalData
+ON salary.id = personalData.id
+INNER JOIN
+person
+ON salary.id = person.id
+WHERE salary.position = 'Manager';
 
